@@ -1,6 +1,8 @@
 package com.stessi.elo.entity;
 
 import javax.persistence.*;
+import java.util.List;
+import java.util.Set;
 
 /**
  * An entity to represent player database entity
@@ -19,6 +21,15 @@ public class PlayerEntity extends BaseEntity {
 
     @Column(name = "name", nullable = false)
     private String name;
+
+    @OneToMany(mappedBy = "homePlayer", targetEntity = MatchEntity.class, fetch = FetchType.EAGER)
+    private Set<MatchEntity> homeMatches;
+
+    @OneToMany(mappedBy = "awayPlayer", targetEntity = MatchEntity.class, fetch = FetchType.EAGER)
+    private Set<MatchEntity> awayMatches;
+
+    @OneToMany(mappedBy = "player")
+    private Set<CompetitionPlayerEntity> competitionPlayers;
 
     public PlayerEntity() {
     }

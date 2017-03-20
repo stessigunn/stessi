@@ -10,7 +10,7 @@ import java.util.Date;
  * @since 7.3.2017.
  */
 @MappedSuperclass
-abstract class BaseEntity {
+public abstract class BaseEntity {
 
     @Version
     @Column(name = "version")

@@ -1,5 +1,7 @@
 package com.stessi.elo.repository;
 
+import com.stessi.elo.entity.CompetitionEntity;
+import com.stessi.elo.entity.PlayerEntity;
 import org.flywaydb.core.Flyway;
 import org.junit.Before;
 import org.junit.Test;
@@ -8,7 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.junit.Assert.*;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author palmithor
@@ -18,11 +21,11 @@ import static org.junit.Assert.*;
 @DataJpaTest
 public class PlayerRepositoryTest {
 
-    @Autowired
-    private PlayerRepository repository;
+    @Autowired private PlayerRepository playerRepository;
 
-    @Autowired
-    private Flyway flyway;
+    @Autowired private CompetitionRepository competitionRepository;
+
+    @Autowired private Flyway flyway;
 
     /**
      * To make sure all tests have the same data when running
@@ -35,7 +38,7 @@ public class PlayerRepositoryTest {
 
     @Test
     public void findAll() throws Exception {
-        System.out.println("hello world");
+
     }
 
 }

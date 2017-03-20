@@ -1,0 +1,28 @@
+
+competitions:
+[
+    {
+        "name":"competition_name",
+        "matches": [match, match, match],
+        "standings": [
+            {
+                "name":"player_name",
+                "competitions"[{id, name}]
+            }
+        ]
+    },
+...
+]
+
+player:
+{
+    "name":"player_name",
+    "competitions": [
+        {
+            "id":1
+            "name":"competition_name",
+            "player_ranking": 1,
+            "player_competition_matches": []
+        }
+    ],
+},

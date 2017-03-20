@@ -17,11 +17,15 @@ public class MatchEntity extends BaseEntity {
     @Column(name = "id")
     private Long id;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "competition_id", referencedColumnName = "id", nullable = false)
+    private CompetitionEntity competition;
+
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "home_player_id", referencedColumnName = "id", nullable = false)
     private PlayerEntity homePlayer;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "away_player_id", referencedColumnName = "id", nullable = false)
     private PlayerEntity awayPlayer;
 
