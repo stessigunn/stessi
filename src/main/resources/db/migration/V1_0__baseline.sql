@@ -65,6 +65,24 @@ CREATE TABLE matches
   CONSTRAINT away_player_id FOREIGN KEY (away_player_id) REFERENCES players (id)
 );
 
+CREATE SEQUENCE match_players_id_seq START WITH 1;
+
+
+CREATE TABLE match_players
+(
+  id        BIGINT    NOT NULL DEFAULT nextval('match_players_id_seq') PRIMARY KEY,
+  match_id  BIGINT    NOT NULL,
+  player_id BIGINT REFERENCES players (id) ON UPDATE CASCADE ON DELETE CASCADE,
+  home_team BOOLEAN   NOT NULL,
+  VERSION   BIGINT,
+  created   TIMESTAMP NOT NULL,
+  updated   TIMESTAMP NOT NULL,
+  CONSTRAINT match_player_uq UNIQUE (match_id, player_id),
+  CONSTRAINT match_players_player_id_fk FOREIGN KEY (player_id) REFERENCES players (id) ON UPDATE CASCADE ON DELETE CASCADE,
+  CONSTRAINT match_players_match_id_fk FOREIGN KEY (match_id) REFERENCES matches (id) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+
 CREATE SEQUENCE competition_players_id_seq START WITH 1;
 
 
@@ -73,7 +91,7 @@ CREATE TABLE competition_players
   id             BIGINT    NOT NULL DEFAULT nextval('competition_players_id_seq') PRIMARY KEY,
   competition_id BIGINT    NOT NULL,
   player_id      BIGINT REFERENCES players (id) ON UPDATE CASCADE ON DELETE CASCADE,
-  rating          INT       NOT NULL DEFAULT 0,
+  rating         INT       NOT NULL DEFAULT 0,
   version        BIGINT,
   created        TIMESTAMP NOT NULL,
   updated        TIMESTAMP NOT NULL,
