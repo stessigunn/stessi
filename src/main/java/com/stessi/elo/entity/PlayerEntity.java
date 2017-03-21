@@ -1,7 +1,6 @@
 package com.stessi.elo.entity;
 
 import javax.persistence.*;
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -30,6 +29,9 @@ public class PlayerEntity extends BaseEntity {
 
     @OneToMany(mappedBy = "player")
     private Set<CompetitionPlayerEntity> competitionPlayers;
+
+    @OneToMany(mappedBy = "player")
+    private Set<MatchPlayerEntity> matchPlayers;
 
     public PlayerEntity() {
     }

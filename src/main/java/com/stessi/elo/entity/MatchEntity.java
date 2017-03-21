@@ -1,6 +1,7 @@
 package com.stessi.elo.entity;
 
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * An entity to represent match database entity
@@ -34,6 +35,9 @@ public class MatchEntity extends BaseEntity {
 
     @Column(name = "away_score", nullable = false)
     private Integer awayScore;
+
+    @OneToMany(mappedBy = "match")
+    private Set<MatchPlayerEntity> matchPlayers;
 
     public MatchEntity() {
     }
